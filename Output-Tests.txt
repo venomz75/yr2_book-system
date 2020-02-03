@@ -1,0 +1,11 @@
+﻿[03/02/2020 17:01:08 Warning] Build failed or it was cancelled.
+[03/02/2020 17:42:02 Informational] Executing all tests in namespace 'Book_Testing'
+[03/02/2020 17:42:02 Informational] ------ Run test started ------
+[03/02/2020 17:42:05 Informational] ========== Run test finished: 0 run (0:00:02.4135715) ==========
+[03/02/2020 17:42:35 Informational] ------ Discover test started ------
+[03/02/2020 17:42:36 Informational] ========== Discover test finished: 0 found (0:00:00.8148291) ==========
+[03/02/2020 17:42:36 Informational] ------ Run test started ------
+[03/02/2020 17:42:36 Informational] ========== Run test finished: 0 run (0:00:00.3919501) ==========
+[03/02/2020 17:46:58 Informational] Executing test method 'Book_Testing.UnitTest1.TestMethod1'
+[03/02/2020 17:46:58 Informational] ------ Run test started ------
+[03/02/2020 17:46:58 Informational] ========== Run test finished: 0 run (0:00:00.5176197) ==========
