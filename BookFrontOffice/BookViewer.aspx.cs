@@ -5,18 +5,12 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-public partial class ABook : System.Web.UI.Page
+public partial class BookViewer : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-
-    }
-
-    protected void btnOK_Click(object senser, EventArgs e)
-    {
         clsBook ABook = new clsBook();
-        ABook.Title = txtTitle.Text;
-        Session["ABook"] = ABook;
-        Response.Redirect("BookViewer.aspx");
+        ABook = (clsBook)Session["ABook"];
+        Response.Write(ABook.Title);
     }
 }
