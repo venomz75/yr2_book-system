@@ -17,6 +17,20 @@ namespace Book_Testing
         }
 
         [TestMethod]
+        public void BookIDOK()
+        {
+            //create book object
+            clsBook book1 = new clsBook();
+            //test data to assign to property
+            Int32 TestData = 5;
+
+            //assign test data to property
+            book1.BookID = TestData;
+            //assert the test data and property hold the same value
+            Assert.AreEqual(book1.BookID, TestData);
+        }
+
+        [TestMethod]
         public void TitleOK()
         {
             //create book object
@@ -48,14 +62,14 @@ namespace Book_Testing
         public void StockOK()
         {
             //create book object
-            clsBook book1 = new clsBook();
+            clsBook ABook = new clsBook();
             //test data to assign to property
             int TestData = 5;
 
             //assign test data to property
-            book1.Stock = TestData;
+            ABook.Stock = TestData;
             //assert the test data and property hold the same value
-            Assert.AreEqual(book1.Stock, TestData);
+            Assert.AreEqual(ABook.Stock, TestData);
         }
 
         [TestMethod]
@@ -78,12 +92,113 @@ namespace Book_Testing
             //create book object
             clsBook book1 = new clsBook();
             //test data to assign to property
-            Boolean TestData = true;
+            bool TestData = true;
 
             //assign test data to property
             book1.AvailableOnline = TestData;
             //assert the test data and property hold the same value
             Assert.AreEqual(book1.AvailableOnline, TestData);
+        }
+
+        [TestMethod]
+        public void FindMethodOK()
+        {
+            clsBook ABook = new clsBook();
+            bool found = false;
+            int BookID = 3;
+            found = ABook.Find(BookID);
+            Assert.IsTrue(found);
+        }
+
+        [TestMethod]
+        public void TestBookIDFound()
+        {
+            clsBook ABook = new clsBook();
+            bool found = false;
+            bool ok = true;
+            int BookID = 3;
+
+            found = ABook.Find(BookID);
+            if (ABook.BookID != 3)
+            {
+                ok = false;
+            }
+            Assert.IsTrue(ok);
+        }
+
+        [TestMethod]
+        public void TestTitleFound()
+        {
+            clsBook ABook = new clsBook();
+            bool found = false;
+            bool ok = true;
+            int BookID = 3;
+            found = ABook.Find(BookID);
+            if (ABook.Title != "Test")
+            {
+                ok = false;
+            }
+            Assert.IsTrue(ok);
+        }
+
+        [TestMethod]
+        public void TestDateAddedFound()
+        {
+            clsBook ABook = new clsBook();
+            bool found = false;
+            bool ok = true;
+            int BookID = 3;
+            found = ABook.Find(BookID);
+            if (ABook.DatePublished != Convert.ToDateTime("12/12/2012"))
+            {
+                ok = false;
+            }
+            Assert.IsTrue(ok);
+        }
+
+        [TestMethod]
+        public void TestStockFound()
+        {
+            clsBook ABook = new clsBook();
+            bool found = false;
+            bool ok = true;
+            int BookID = 3;
+            found = ABook.Find(BookID);
+            if (ABook.Stock != 6)
+            {
+                ok = false;
+            }
+            Assert.IsTrue(ok);
+        }
+
+        [TestMethod]
+        public void TestPriceFound()
+        {
+            clsBook ABook = new clsBook();
+            bool found = false;
+            bool ok = true;
+            int BookID = 3;
+            found = ABook.Find(BookID);
+            if (ABook.Price != 9.99F)
+            {
+                ok = false;
+            }
+            Assert.IsTrue(ok);
+        }
+
+        [TestMethod]
+        public void TestAvailableOnlineFound()
+        {
+            clsBook ABook = new clsBook();
+            bool found = false;
+            bool ok = true;
+            int BookID = 3;
+            found = ABook.Find(BookID);
+            if (ABook.AvailableOnline != true)
+            {
+                ok = false;
+            }
+            Assert.IsTrue(ok);
         }
     }
 }
