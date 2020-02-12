@@ -5,15 +5,13 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace Book_Testing
 {
     [TestClass]
-    public class tstStaff
+    public class tstOrderLine
     {
         [TestMethod]
-        public void TestMethod1()
+        public void InstanceOK()
         {
-            clsStaff AnStaff = new clsStaff();
-            Assert.IsNotNull(AnStaff);
-            
-
+            clsOrderLine AnOrderLine = new clsOrderLine();
+            Assert.IsNotNull(AnOrderLine);
         }
     }
 }
