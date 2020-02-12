@@ -50,15 +50,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
-<<<<<<< HEAD
     <Compile Include="tstStaff.cs" />
-=======
     <Compile Include="tstBooks.cs" />
-<<<<<<< HEAD
->>>>>>> master
-=======
     <Compile Include="tstOrder.cs" />
->>>>>>> 9dd66a65090039bee478195a91ed38e1fa4120f5
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
