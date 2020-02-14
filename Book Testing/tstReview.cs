@@ -5,15 +5,13 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace Book_Testing
 {
     [TestClass]
-    public class tstStaff
+    public class tstReview
     {
         [TestMethod]
-        public void TestMethod1()
+        public void ReviewNoExists()
         {
-            clsStaff AnStaff = new clsStaff();
-            Assert.IsNotNull(AnStaff);
-            
-
+            clsReview anReview = new clsReview();
+            Assert.IsNotNull(anReview);
         }
     }
 }

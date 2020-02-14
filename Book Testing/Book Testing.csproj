@@ -53,6 +53,7 @@
     <Compile Include="tstStaff.cs" />
     <Compile Include="tstBooks.cs" />
     <Compile Include="tstOrder.cs" />
+    <Compile Include="tstReview.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
