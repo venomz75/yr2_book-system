@@ -105,7 +105,7 @@ namespace Book_Testing
         {
             clsBook ABook = new clsBook();
             bool found = false;
-            int BookID = 3;
+            int BookID = 1;
             found = ABook.Find(BookID);
             Assert.IsTrue(found);
         }
@@ -116,10 +116,10 @@ namespace Book_Testing
             clsBook ABook = new clsBook();
             bool found = false;
             bool ok = true;
-            int BookID = 3;
+            int BookID = 1;
 
             found = ABook.Find(BookID);
-            if (ABook.BookID != 3)
+            if (ABook.BookID != 1)
             {
                 ok = false;
             }
@@ -132,7 +132,7 @@ namespace Book_Testing
             clsBook ABook = new clsBook();
             bool found = false;
             bool ok = true;
-            int BookID = 3;
+            int BookID = 1;
             found = ABook.Find(BookID);
             if (ABook.Title != "Test")
             {
@@ -147,7 +147,7 @@ namespace Book_Testing
             clsBook ABook = new clsBook();
             bool found = false;
             bool ok = true;
-            int BookID = 3;
+            int BookID = 1;
             found = ABook.Find(BookID);
             if (ABook.DatePublished != Convert.ToDateTime("12/12/2012"))
             {
@@ -162,9 +162,9 @@ namespace Book_Testing
             clsBook ABook = new clsBook();
             bool found = false;
             bool ok = true;
-            int BookID = 3;
+            int BookID = 1;
             found = ABook.Find(BookID);
-            if (ABook.Stock != 6)
+            if (ABook.Stock != 3)
             {
                 ok = false;
             }
@@ -177,7 +177,7 @@ namespace Book_Testing
             clsBook ABook = new clsBook();
             bool found = false;
             bool ok = true;
-            int BookID = 3;
+            int BookID = 1;
             found = ABook.Find(BookID);
             if (ABook.Price != 9.99F)
             {
@@ -192,7 +192,7 @@ namespace Book_Testing
             clsBook ABook = new clsBook();
             bool found = false;
             bool ok = true;
-            int BookID = 3;
+            int BookID = 1;
             found = ABook.Find(BookID);
             if (ABook.AvailableOnline != true)
             {
