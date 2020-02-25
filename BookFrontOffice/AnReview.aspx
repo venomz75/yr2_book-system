@@ -10,9 +10,9 @@
     <form id="form1" runat="server">
         <div>
             Reviewer Name:
-            <input id="txtReviewName" type="text" /></div>
+            <input id="txtName" type="text" /></div>
         <br />
-        Date Added:&nbsp;&nbsp;&nbsp; <input id="Text2" type="text" /><br />
+        Date Added:&nbsp;&nbsp;&nbsp; <input id="txtDate" type="text" /><br />
         <br />
         Star Rating:&nbsp;&nbsp;
         <asp:RadioButtonList ID="RadioButtonList1" runat="server">
