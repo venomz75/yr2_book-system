@@ -5,9 +5,10 @@ VisualStudioVersion = 15.0.28307.645
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BookBackOffice", "BookBackOffice\BookBackOffice.csproj", "{AC199271-530C-4659-8E8C-B922ED46684D}"
 EndProject
-Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "BookFrontOffice", "BookFrontOffice", "{6E8E153A-D121-481E-B6FA-BD4F818CE263}"
+Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "BookFrontOffice", "BookFrontOffice\", "{6E8E153A-D121-481E-B6FA-BD4F818CE263}"
 	ProjectSection(WebsiteProperties) = preProject
 		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.6.1"
+		ProjectReferences = "{912bb2d9-2020-4374-9e29-eaf10d3903c8}|BookClasses.dll;"
 		Debug.AspNetCompiler.VirtualPath = "/localhost_35163"
 		Debug.AspNetCompiler.PhysicalPath = "BookFrontOffice\"
 		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_35163\"
@@ -28,6 +29,8 @@ Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "BookFrontOffice", "BookFron
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BookClasses", "BookClasses\BookClasses.csproj", "{912BB2D9-2020-4374-9E29-EAF10D3903C8}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{02439A58-727E-4CAD-958D-5EF0A47B5DC1}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Book Testing", "Book Testing\Book Testing.csproj", "{AA599EDD-2BCB-4600-A09A-701D7E82F617}"
 EndProject
