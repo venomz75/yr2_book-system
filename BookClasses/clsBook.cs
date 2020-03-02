@@ -88,15 +88,27 @@ namespace BookClasses
         }
 
 
-        public bool Find(int bookid)
+        public bool Find(int BookID)
         {
-            mBookID = 3;
-            mTitle = "Test";
-            mDatePublished = Convert.ToDateTime("12/12/2012");
-            mStock = 6;
-            mPrice = 9.99F;
-            mAvailableOnline = true;
-            return true;
+            clsDataConnection DB = new clsDataConnection();
+            DB.AddParameter("@BookID", BookID);
+            DB.Execute("sproc_tblBooks_FilterByBookID");    
+
+            if (DB.Count == 1)
+            {
+                mBookID = Convert.ToInt32(DB.DataTable.Rows[0]["BookID"]);
+                mTitle = Convert.ToString(DB.DataTable.Rows[0]["Title"]);
+                mDatePublished = Convert.ToDateTime(DB.DataTable.Rows[0]["DatePublished"]);
+                mStock = Convert.ToInt32(DB.DataTable.Rows[0]["Stock"]);
+                mPrice = (float) Convert.ToDouble(DB.DataTable.Rows[0]["Price"]);
+                mAvailableOnline = Convert.ToBoolean(DB.DataTable.Rows[0]["AvailableOnline"]);
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+            
         }
     }
 }
