@@ -88,7 +88,7 @@ namespace BookClasses
         }
 
 
-        public bool Find(int bookid)
+        public bool Find(int BookID)
         {
             clsDataConnection DB = new clsDataConnection();
             DB.AddParameter("@BookID", BookID);
@@ -100,7 +100,7 @@ namespace BookClasses
                 mTitle = Convert.ToString(DB.DataTable.Rows[0]["Title"]);
                 mDatePublished = Convert.ToDateTime(DB.DataTable.Rows[0]["DatePublished"]);
                 mStock = Convert.ToInt32(DB.DataTable.Rows[0]["Stock"]);
-                mPrice = (float) (DB.DataTable.Rows[0]["Price"]);
+                mPrice = (float) Convert.ToDouble(DB.DataTable.Rows[0]["Price"]);
                 mAvailableOnline = Convert.ToBoolean(DB.DataTable.Rows[0]["AvailableOnline"]);
                 return true;
             }
