@@ -27,9 +27,9 @@ public partial class AnReview : System.Web.UI.Page
         //capture the review name
         AnReview.ReviewerName = Ok_button.Text;
         //capture the date
-       // AnReview.DateAdded = Convert.ToDateTime(Ok_button.Text);
+        AnReview.DateAdded = Convert.ToDateTime(Ok_button.Text);
         //capture star rating 
-       // AnReview.Star = RadioButtonList1.SelectedIndex;
+        AnReview.Star = RadioButtonList1.SelectedIndex;
         //store the review in the session object
         Session["AnReview"] = AnReview;
         //redirect to the viewer page
