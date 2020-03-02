@@ -18,17 +18,7 @@ namespace Book_Testing
             Assert.IsNotNull(anReview);
         }
 
-        [TestMethod]
-        public void ActiveReviewOK()
-        {
-            clsReview AnReview = new clsReview();
-
-            Boolean TestData = true;
-
-            AnReview.Active = TestData;
-
-            Assert.AreEqual(AnReview.Active, TestData);
-        }
+    
 
         [TestMethod]
         public void DateAddedReviewOK()
@@ -42,17 +32,7 @@ namespace Book_Testing
             Assert.AreEqual(AnReview.DateAdded, TestData);
         }
 
-        [TestMethod]
-        public void ReviewNoReviewOK()
-        {
-            clsReview AnReview = new clsReview();
-
-            Int32 TestData = 1;
-
-            AnReview.ReviewNo = TestData;
-
-            Assert.AreEqual(AnReview.ReviewNo, TestData);
-        }
+       
 
         [TestMethod]
         public void ReviewerNameOK()
@@ -87,7 +67,7 @@ namespace Book_Testing
 
             AnReview.WouldUse = TestData;
 
-            Assert.AreEqual(AnReview.Active, TestData);
+            Assert.AreEqual(AnReview.WouldUse, TestData);
         }
 
         [TestMethod]
@@ -104,26 +84,7 @@ namespace Book_Testing
             Assert.IsTrue(Found);
         }
 
-        [TestMethod]
-        public void TestReviewNoFound()
-        {
-            clsReview AnReview = new clsReview();
-
-            Boolean Found = false;
-
-            Boolean OK = true;
-
-            Int32 ReviewNo = 33;
-
-            Found = AnReview.Find(ReviewNo);
-
-            if (AnReview.ReviewNo != 33)
-            {
-                OK = false;
-            }
-            //test to see that the result is correct
-            Assert.IsTrue(OK);
-        }
+       
 
         [TestMethod]
         public void TestReviewNameFound()
@@ -214,27 +175,7 @@ namespace Book_Testing
             Assert.IsTrue(OK);
         }
 
-        [TestMethod]
-        public void TestActiveFound()
-        {
-            clsReview AnReview = new clsReview();
-
-            Boolean Found = false;
-
-            Boolean OK = true;
-
-            Int32 ReviewNo = 33;
-
-            Found = AnReview.Find(ReviewNo);
-
-            if (AnReview.Active != true)
-            {
-                OK = false;
-            }
-
-            //test to see that the result is correct
-            Assert.IsTrue(OK);
-        }
+        
     }
 
 }

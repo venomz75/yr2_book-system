@@ -15,25 +15,11 @@
         Date Added:&nbsp;&nbsp;&nbsp; <input id="txtDate" type="text" /><br />
         <br />
         Star Rating:&nbsp;&nbsp;
-        <asp:RadioButtonList ID="RadioButtonList1" runat="server">
-            <asp:ListItem>1 Star</asp:ListItem>
-            <asp:ListItem>2 Star</asp:ListItem>
-            <asp:ListItem>3 Star</asp:ListItem>
-            <asp:ListItem>4Star</asp:ListItem>
-            <asp:ListItem>5 Star</asp:ListItem>
-        </asp:RadioButtonList>
-        <br />
+        <input id="Text1" type="text" /><br />
         <br />
         <br />
         Would Use Again?
-        <asp:RadioButtonList ID="txtWouldUse" runat="server" OnSelectedIndexChanged="txtWouldUse_SelectedIndexChanged">
-            <asp:ListItem>Yes</asp:ListItem>
-            <asp:ListItem>No</asp:ListItem>
-        </asp:RadioButtonList>
-        <br />
-        <p>
-            <asp:RadioButton ID="Active" runat="server" OnCheckedChanged="RadioButton1_CheckedChanged" />
-        </p>
+        <input id="Text2" type="text" /><br />
         <p>
             <asp:Button ID="Ok_button" runat="server" OnClick="Button1_Click" Text="OK" />
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
