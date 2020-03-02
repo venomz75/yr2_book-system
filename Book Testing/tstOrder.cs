@@ -7,7 +7,7 @@ namespace Book_Testing
     [TestClass]
     public class tstOrder
     {
-        
+
         [TestMethod]
         public void InstanceOK()
         {
@@ -70,7 +70,19 @@ namespace Book_Testing
 
             Assert.AreEqual(AnOrder.OrderStatus, TestData);
         }
-        
+        [TestMethod]
+        public void StaffIDOK()
+        {
+            clsOrder AnOrder = new clsOrder();
+
+            Int32 TestData = 5;
+            AnOrder.StaffID = TestData;
+
+            Assert.AreEqual(AnOrder.StaffID, TestData);
+
+
+        }
+
 
 
     }

@@ -9,5 +9,6 @@ namespace BookClasses
         public DateTime DatePlaced { get; set; }
         public bool Completed { get; set; }
         public string OrderStatus { get; set; }
+        public int StaffID { get; set; }
     }
 }
