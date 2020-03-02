@@ -89,6 +89,152 @@ namespace Book_Testing
 
             Assert.AreEqual(AnReview.Active, TestData);
         }
+
+        [TestMethod]
+        public void FindMethodOK()
+        {
+            clsReview AnReview = new clsReview();
+
+            Boolean Found = false;
+
+            Int32 ReviewNo = 3;
+
+            Found = AnReview.Find(ReviewNo);
+
+            Assert.IsTrue(Found);
+        }
+
+        [TestMethod]
+        public void TestReviewNoFound()
+        {
+            clsReview AnReview = new clsReview();
+
+            Boolean Found = false;
+
+            Boolean OK = true;
+
+            Int32 ReviewNo = 33;
+
+            Found = AnReview.Find(ReviewNo);
+
+            if (AnReview.ReviewNo != 33)
+            {
+                OK = false;
+            }
+            //test to see that the result is correct
+            Assert.IsTrue(OK);
+        }
+
+        [TestMethod]
+        public void TestReviewNameFound()
+        {
+            clsReview AnReview = new clsReview();
+
+            Boolean Found = false;
+
+            Boolean OK = true;
+
+            Int32 ReviewNo = 33;
+
+            Found = AnReview.Find(ReviewNo);
+
+            if (AnReview.ReviewerName != "Paul")
+            {
+                OK = false;
+            }
+
+            //test to see that the result is correct
+            Assert.IsTrue(OK);
+
+        }
+
+        [TestMethod]
+        public void TestDateAddedFound()
+        {
+            clsReview AnReview = new clsReview();
+
+            Boolean Found = false;
+
+            Boolean OK = true;
+
+            Int32 ReviewNo = 33;
+
+            Found = AnReview.Find(ReviewNo);
+
+            if (AnReview.DateAdded != Convert.ToDateTime("06/06/2018"))
+            {
+                OK = false;
+            }
+
+            //test to see that the result is correct
+            Assert.IsTrue(OK);
+        }
+
+        [TestMethod]
+        public void TestStarFound()
+        {
+            clsReview AnReview = new clsReview();
+
+            Boolean Found = false;
+
+            Boolean OK = true;
+
+            Int32 ReviewNo = 33;
+
+            Found = AnReview.Find(ReviewNo);
+
+            if (AnReview.Star != 5)
+            {
+                OK = false;
+            }
+
+            //test to see that the result is correct
+            Assert.IsTrue(OK);
+        }
+
+        [TestMethod]
+        public void TestWouldUseFound()
+        {
+            clsReview AnReview = new clsReview();
+
+            Boolean Found = false;
+
+            Boolean OK = true;
+
+            Int32 ReviewNo = 33;
+
+            Found = AnReview.Find(ReviewNo);
+
+            if (AnReview.WouldUse != true)
+            {
+                OK = false;
+            }
+
+            //test to see that the result is correct
+            Assert.IsTrue(OK);
+        }
+
+        [TestMethod]
+        public void TestActiveFound()
+        {
+            clsReview AnReview = new clsReview();
+
+            Boolean Found = false;
+
+            Boolean OK = true;
+
+            Int32 ReviewNo = 33;
+
+            Found = AnReview.Find(ReviewNo);
+
+            if (AnReview.Active != true)
+            {
+                OK = false;
+            }
+
+            //test to see that the result is correct
+            Assert.IsTrue(OK);
+        }
     }
 
 }
