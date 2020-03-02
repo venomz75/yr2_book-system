@@ -26,9 +26,9 @@ namespace Book_Testing
             //create some test data to assign to the property
             Boolean TestData = true;
             //assign data to the property
-            ACustomer.Active = TestData;
+            ACustomer.PremiumMember = TestData;
             //test to see that the two values are the same
-            Assert.AreEqual(ACustomer.Active, TestData);
+            Assert.AreEqual(ACustomer.PremiumMember, TestData);
 
         }
 
@@ -69,19 +69,6 @@ namespace Book_Testing
             ACustomer.Address = TestData;
             //test to see that the two values are the same
             Assert.AreEqual(ACustomer.Address, TestData);
-        }
-
-        [TestMethod]
-        public void UsernamePropertyOK()
-        {
-            //Create an instance of the class we want to create
-            clsCustomers ACustomer = new clsCustomers();
-            //Create some test data to aaign to the property
-            string TestData = "AUsername";
-            //assign the data to the property
-            ACustomer.Username = TestData;
-            //test to see that the two values are the same
-            Assert.AreEqual(ACustomer.Username, TestData);
         }
 
         [TestMethod]
