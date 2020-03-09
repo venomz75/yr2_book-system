@@ -7,6 +7,14 @@ namespace Book_Testing
     [TestClass]
     public class tstBooks
     {
+        //valid test data
+        int BookID = 4;
+        string Title = "Oxford English Dictionary";
+        DateTime DatePublished = Convert.ToDateTime("1/2/1884");
+        int Stock = 50;
+        float Price = 9.99F;
+        bool AvailableOnline = false;
+
         [TestMethod]
         public void InstanceOK()
         {   
@@ -199,6 +207,14 @@ namespace Book_Testing
                 ok = false;
             }
             Assert.IsTrue(ok);
+        }
+
+        [TestMethod]
+        public void ValidMethodOK()
+        {
+            clsBook ABook = new clsBook();
+            string ErrorMsg = "";
+            ErrorMsg = ABook.Valid(BookID, Title, DatePublished, Stock, Price, AvailableOnline);
         }
     }
 }

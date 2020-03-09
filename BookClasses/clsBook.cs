@@ -110,5 +110,16 @@ namespace BookClasses
             }
             
         }
+
+        public string Valid(int BookID,
+                            string Title,
+                            DateTime DatePublished,
+                            int Stock,
+                            float Price,
+                            bool AvailableOnline)
+        {
+
+            return "";
+        }
     }
 }
