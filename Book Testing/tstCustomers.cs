@@ -95,8 +95,19 @@ namespace Book_Testing
             ACustomer.Name = TestData;
             //test to see that the two values are the same
             Assert.AreEqual(ACustomer.Name, TestData);
+        }
 
-
+        [TestMethod]
+        public void PasswordPropertyOK()
+        {
+            //Create an instance of the class we want to create
+            clsCustomers ACustomer = new clsCustomers();
+            //Create some test data to aaign to the property
+            string TestData = "Password1";
+            //assign the data to the property
+            ACustomer.Password = TestData;
+            //test to see that the two values are the same
+            Assert.AreEqual(ACustomer.Password, TestData);
         }
     }
 }
