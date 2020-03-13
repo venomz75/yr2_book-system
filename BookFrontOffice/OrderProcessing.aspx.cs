@@ -18,20 +18,56 @@ public partial class OrderProcessing : System.Web.UI.Page
     protected void btnOK_Click(object sender, EventArgs e)
     {
         clsOrder AnOrder = new clsOrder();
-        //capture order id
-        AnOrder.OrderID = Convert.ToInt32(txtOrderID.Text);
+        
 
-        AnOrder.CustomerID = Convert.ToInt32(txtCustomerID.Text);
+        string CustomerID = txtCustomerID.Text;
+        string DatePlaced = txtDatePlaced.Text;
+        string Completed = txtCompleted.Text;
+        string StaffID = txtStaffID.Text;
+        string OrderStatus = txtOrderStatus.Text;
+        string Error = "";
+        Error = AnOrder.Valid(CustomerID, DatePlaced, Completed, StaffID, OrderStatus);
+        if (Error =="")
+        {
+            
 
-        AnOrder.DatePlaced = Convert.ToDateTime(txtDatePlaced.Text);
+            AnOrder.CustomerID = Convert.ToInt32(CustomerID);
 
-        AnOrder.Completed = Convert.ToBoolean(txtCompleted.Text);
+            AnOrder.DatePlaced = Convert.ToDateTime(DatePlaced);
 
-        AnOrder.OrderStatus = txtOrderStatus.Text;
+            AnOrder.Completed = Convert.ToBoolean(Completed);
 
+            AnOrder.StaffID = Convert.ToInt32(StaffID);
 
-        Session["AnOrder"] = AnOrder;
-        Response.Redirect("OrderViewer.aspx");
+            AnOrder.OrderStatus = txtOrderStatus.Text;
+            Session["AnOrder"] = AnOrder;
+            Response.Redirect("OrderViewer.aspx");
+        }
+        else
+        {
+            lblError.Text = Error;
+        }
+        
+
+    }
+
+    protected void btnFind_Click(object sender, EventArgs e)
+    {
+        clsOrder AnOrder = new clsOrder();
+        Int32 OrderID;
+        Boolean Found = false;
+        OrderID = Convert.ToInt32(txtOrderID.Text);
+        Found = AnOrder.Find(OrderID);
+        if (Found == true)
+        {
+            txtOrderID.Text = Convert.ToString(AnOrder.OrderID);
+            txtCustomerID.Text = Convert.ToString(AnOrder.CustomerID);
+            txtDatePlaced.Text = Convert.ToString(AnOrder.DatePlaced);
+            txtCompleted.Text = Convert.ToString(AnOrder.Completed);
+            txtStaffID.Text = Convert.ToString(AnOrder.StaffID);
+            txtOrderStatus.Text = AnOrder.OrderStatus;
+
+        }
 
     }
 }

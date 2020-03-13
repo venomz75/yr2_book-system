@@ -10,6 +10,7 @@
     <form id="form1" runat="server">
         <div>
             OrderID<asp:TextBox ID="txtOrderID" runat="server"></asp:TextBox>
+            <asp:Button ID="btnFind" runat="server" OnClick="btnFind_Click" Text="Find" />
         </div>
         CustomerID<asp:TextBox ID="txtCustomerID" runat="server"></asp:TextBox>
         <p>
@@ -19,8 +20,15 @@
         <p>
             OrderStatus<asp:TextBox ID="txtOrderStatus" runat="server"></asp:TextBox>
         </p>
+        <p>
+            StaffID<asp:TextBox ID="txtStaffID" runat="server"></asp:TextBox>
+        </p>
+        <p>
+            <asp:Label ID="lblError" runat="server" Text="Label"></asp:Label>
+        </p>
         <asp:Button ID="btnOK" runat="server" OnClick="btnOK_Click" Text="OK" />
         <asp:Button ID="btnCancel" runat="server" Text="Cancel" />
+        <br />
     </form>
 </body>
 </html>
