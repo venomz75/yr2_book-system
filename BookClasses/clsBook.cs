@@ -111,15 +111,30 @@ namespace BookClasses
             
         }
 
-        public string Valid(int BookID,
-                            string Title,
-                            DateTime DatePublished,
-                            int Stock,
-                            float Price,
-                            bool AvailableOnline)
+        public string Valid(int bookID,
+                            string title,
+                            DateTime datePublished,
+                            int stock,
+                            float price,
+                            bool availableOnline)
         {
+            string Error = "";
 
-            return "";
+            if (bookID < 1)
+            {
+                Error += "The BookID may not be lower than 1.\n";
+            }
+
+            if (title.Length < 1)
+            {
+                Error += "The Title may not be shorter than 1 character.\n";
+            }
+            
+            if(title.Length > 50)
+            {
+                Error += "The Title may not be longer than 50 characters.\n";
+            }
+            return Error;
         }
     }
 }

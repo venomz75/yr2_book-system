@@ -216,5 +216,67 @@ namespace Book_Testing
             string ErrorMsg = "";
             ErrorMsg = ABook.Valid(BookID, Title, DatePublished, Stock, Price, AvailableOnline);
         }
+
+        [TestMethod]
+        public void BookIDMinMinusOne()
+        {
+            clsBook ABook = new clsBook();
+            string ErrorMsg = "";
+            int BookID = 0;
+            ErrorMsg = ABook.Valid(BookID, Title, DatePublished, Stock, Price, AvailableOnline);
+            Assert.AreNotEqual(ErrorMsg, "");
+        }
+
+        [TestMethod]
+        public void BookIDMin()
+        {
+            clsBook ABook = new clsBook();
+            string ErrorMsg = "";
+            int BookID = 1;
+            ErrorMsg = ABook.Valid(BookID, Title, DatePublished, Stock, Price, AvailableOnline);
+            Assert.AreEqual(ErrorMsg, "");
+        }
+
+        [TestMethod]
+        public void BookIDMinPlusOne()
+        {
+            clsBook ABook = new clsBook();
+            string ErrorMsg = "";
+            int BookID = 2;
+            ErrorMsg = ABook.Valid(BookID, Title, DatePublished, Stock, Price, AvailableOnline);
+            Assert.AreEqual(ErrorMsg, "");
+        }
+
+        [TestMethod]
+        public void BookIDMaxMinusOne()
+        {
+            clsBook ABook = new clsBook();
+            string ErrorMsg = "";
+            int BookID = 2147483646;
+            ErrorMsg = ABook.Valid(BookID, Title, DatePublished, Stock, Price, AvailableOnline);
+            Assert.AreEqual(ErrorMsg, "");
+        }
+
+        [TestMethod]
+        public void BookIDMax()
+        {
+            clsBook ABook = new clsBook();
+            string ErrorMsg = "";
+            int BookID = 2147483647;
+            ErrorMsg = ABook.Valid(BookID, Title, DatePublished, Stock, Price, AvailableOnline);
+            Assert.AreEqual(ErrorMsg, "");
+        }
+
+        [TestMethod]
+        public void BookIDMid()
+        {
+            clsBook ABook = new clsBook();
+            string ErrorMsg = "";
+            int BookID = 1073741823;
+            ErrorMsg = ABook.Valid(BookID, Title, DatePublished, Stock, Price, AvailableOnline);
+            Assert.AreEqual(ErrorMsg, "");
+        }
+
+            
     }
 }
