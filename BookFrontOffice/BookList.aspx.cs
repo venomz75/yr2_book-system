@@ -10,7 +10,6 @@ public partial class BookList : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-        DisplayBooks();
         if (IsPostBack == false)
         {
             DisplayBooks();
@@ -34,7 +33,7 @@ public partial class BookList : System.Web.UI.Page
 
     protected void btnDelete_Click(object sender, EventArgs e)
     {
-        lblError.Text = "Delete event fired";
+        int test = lstBookList.SelectedIndex;
         int BookID;
         if (lstBookList.SelectedIndex != -1)
         {
