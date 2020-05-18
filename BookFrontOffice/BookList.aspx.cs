@@ -10,6 +10,7 @@ public partial class BookList : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
+        DisplayBooks();
         if (IsPostBack == false)
         {
             DisplayBooks();

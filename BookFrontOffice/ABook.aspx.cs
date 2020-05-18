@@ -12,10 +12,10 @@ public partial class ABook : System.Web.UI.Page
 
     protected void Page_Load(object sender, EventArgs e)
     {
-        BookID = Convert.ToInt32(Session["ABook"]);
+        BookID = Convert.ToInt32(Session["BookID"]);
         if (IsPostBack == false)
         {
-            if (BookID != 1)
+            if (BookID != -1)
             {
                 DisplayBook();
             }
@@ -34,44 +34,56 @@ public partial class ABook : System.Web.UI.Page
         chkAvailableOnline.Checked = BookList.ThisBook.AvailableOnline;
     }
 
-    protected void btnOK_Click(object sender, EventArgs e)
+    void Add()
     {
-        clsBook ABook = new clsBook();
-        string Title = txtTitle.Text;
-        DateTime DatePublished = Convert.ToDateTime(txtDatePublished.Text);
-        int Stock = Convert.ToInt32(txtStock.Text);
-        float Price = Convert.ToSingle(txtPrice.Text);
-        bool AvailableOnline = chkAvailableOnline.Checked;
-        string Error = "";
-        Error = ABook.Valid(Title, DatePublished, Stock, Price, AvailableOnline);
+        clsBookCollection BookList = new clsBookCollection();
+        string Error = BookList.ThisBook.Valid(txtTitle.Text, Convert.ToDateTime(txtDatePublished.Text), Convert.ToInt32(txtStock.Text), Convert.ToSingle(txtPrice.Text), chkAvailableOnline.Checked);
         if (Error == "")
         {
-            ABook.BookID = BookID;
-            ABook.Title = Title;
-            ABook.DatePublished = DatePublished;
-            ABook.Stock = Stock;
-            ABook.Price = Price;
-            ABook.AvailableOnline = AvailableOnline;
-            clsBookCollection BookList = new clsBookCollection();
-
-            if (BookID == -1)
-            {
-                BookList.ThisBook = ABook;
-                BookList.Add();
-            }
-            else
-            {
-                BookList.ThisBook.Find(BookID);
-                BookList.ThisBook = ABook;
-                BookList.Update();
-            }
-            BookList.ThisBook = ABook;
+            BookList.ThisBook.Title = txtTitle.Text;
+            BookList.ThisBook.DatePublished = Convert.ToDateTime(txtDatePublished.Text);
+            BookList.ThisBook.Stock = Convert.ToInt32(txtStock.Text);
+            BookList.ThisBook.Price = Convert.ToSingle(txtPrice.Text);
+            BookList.ThisBook.AvailableOnline = chkAvailableOnline.Checked;
             BookList.Add();
             Response.Redirect("BookList.aspx");
         }
         else
         {
-            lblError.Text = "ERROR: Book ID must be an integer.";
+            lblError.Text = "There were problems with the data entered: " + Error;
+        }
+    }
+
+    void Update()
+    {
+        clsBookCollection BookList = new clsBookCollection();
+        string Error = BookList.ThisBook.Valid(txtTitle.Text, Convert.ToDateTime(txtDatePublished.Text), Convert.ToInt32(txtStock.Text), Convert.ToSingle(txtPrice.Text), chkAvailableOnline.Checked);
+        if (Error == "")
+        {
+            BookList.ThisBook.Find(BookID);
+            BookList.ThisBook.Title = txtTitle.Text;
+            BookList.ThisBook.DatePublished = Convert.ToDateTime(txtDatePublished.Text);
+            BookList.ThisBook.Stock = Convert.ToInt32(txtStock.Text);
+            BookList.ThisBook.Price = Convert.ToSingle(txtPrice.Text);
+            BookList.ThisBook.AvailableOnline = chkAvailableOnline.Checked;
+            BookList.Update();
+            Response.Redirect("BookList.aspx");
+        }
+        else
+        {
+            lblError.Text = "There were problems with the data entered: " + Error;
+        }
+    }
+
+    protected void btnOK_Click(object sender, EventArgs e)
+    {
+        if (BookID == -1)
+        {
+            Add();
+        }
+        else
+        {
+            Update();
         }
     }
 

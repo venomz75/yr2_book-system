@@ -85,7 +85,7 @@ namespace BookClasses
         {
             clsDataConnection DB = new clsDataConnection();
             DB.AddParameter("@BookID", mThisBook.BookID);
-            DB.Execute("sproc_tblBook_Delete");
+            DB.Execute("sproc_tblBooks_Delete");
         }
 
         public void Update()
@@ -105,6 +105,7 @@ namespace BookClasses
             clsDataConnection DB = new clsDataConnection();
             DB.AddParameter("@Title", Title);
             DB.Execute("sproc_tblBooks_FilterByTitle");
+            PopulateArray(DB);
         }
     }
 }

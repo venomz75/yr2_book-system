@@ -15,7 +15,7 @@
             <br />
             <asp:Button ID="btnAdd" runat="server" OnClick="btnAdd_Click" Text="Add" />
             <asp:Button ID="btnEdit" runat="server" OnClick="btnEdit_Click" Text="Edit" />
-            <asp:Button ID="btnDelete" runat="server" OnClick="btnAdd_Click" Text="Delete" />
+            <asp:Button ID="btnDelete" runat="server" OnClick="btnDelete_Click" Text="Delete" />
             <br />
             <br />
             <asp:Label ID="lblFilter" runat="server" Text="Enter a title"></asp:Label>
