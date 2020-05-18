@@ -100,7 +100,7 @@ namespace BookClasses
                 mTitle = Convert.ToString(DB.DataTable.Rows[0]["Title"]);
                 mDatePublished = Convert.ToDateTime(DB.DataTable.Rows[0]["DatePublished"]);
                 mStock = Convert.ToInt32(DB.DataTable.Rows[0]["Stock"]);
-                mPrice = (float) Convert.ToDouble(DB.DataTable.Rows[0]["Price"]);
+                mPrice = Convert.ToSingle(DB.DataTable.Rows[0]["Price"]);
                 mAvailableOnline = Convert.ToBoolean(DB.DataTable.Rows[0]["AvailableOnline"]);
                 return true;
             }
@@ -109,6 +109,38 @@ namespace BookClasses
                 return false;
             }
             
+        }
+
+        public string Valid(string title,
+                            DateTime datePublished,
+                            int stock,
+                            float price,
+                            bool availableOnline)
+        {
+            string error = "";
+
+            if (title.Length < 1)
+            {
+                error += "The Title may not be shorter than 1 character.\n";
+            }
+            
+            if(title.Length > 50)
+            {
+                error += "The Title may not be longer than 50 characters.\n";
+            }
+            if (datePublished > DateTime.Now.Date)
+            {
+                error += "The Date cannot be in the future.\n";
+            }
+            if (stock < 0)
+            {
+                error += "The Stock may not be lower than 0.\n";
+            }
+            if (price < 0.01)
+            {
+                error += "The Price may not be lower than 0.01.\n";
+            }
+            return error;
         }
     }
 }

@@ -7,6 +7,14 @@ namespace Book_Testing
     [TestClass]
     public class tstBooks
     {
+        //valid test data
+        int BookID = 4;
+        string Title = "Oxford English Dictionary";
+        DateTime DatePublished = Convert.ToDateTime("1/2/1884");
+        int Stock = 50;
+        float Price = 9.99F;
+        bool AvailableOnline = false;
+
         [TestMethod]
         public void InstanceOK()
         {   
@@ -200,5 +208,75 @@ namespace Book_Testing
             }
             Assert.IsTrue(ok);
         }
+
+        [TestMethod]
+        public void ValidMethodOK()
+        {
+            clsBook ABook = new clsBook();
+            string ErrorMsg = "";
+            ErrorMsg = ABook.Valid(Title, DatePublished, Stock, Price, AvailableOnline);
+        }
+
+        [TestMethod]
+        public void BookIDMinMinusOne()
+        {
+            clsBook ABook = new clsBook();
+            string ErrorMsg = "";
+            int BookID = 0;
+            ErrorMsg = ABook.Valid(Title, DatePublished, Stock, Price, AvailableOnline);
+            Assert.AreNotEqual(ErrorMsg, "");
+        }
+
+        [TestMethod]
+        public void BookIDMin()
+        {
+            clsBook ABook = new clsBook();
+            string ErrorMsg = "";
+            int BookID = 1;
+            ErrorMsg = ABook.Valid(Title, DatePublished, Stock, Price, AvailableOnline);
+            Assert.AreEqual(ErrorMsg, "");
+        }
+
+        [TestMethod]
+        public void BookIDMinPlusOne()
+        {
+            clsBook ABook = new clsBook();
+            string ErrorMsg = "";
+            int BookID = 2;
+            ErrorMsg = ABook.Valid(Title, DatePublished, Stock, Price, AvailableOnline);
+            Assert.AreEqual(ErrorMsg, "");
+        }
+
+        [TestMethod]
+        public void BookIDMaxMinusOne()
+        {
+            clsBook ABook = new clsBook();
+            string ErrorMsg = "";
+            int BookID = 2147483646;
+            ErrorMsg = ABook.Valid(Title, DatePublished, Stock, Price, AvailableOnline);
+            Assert.AreEqual(ErrorMsg, "");
+        }
+
+        [TestMethod]
+        public void BookIDMax()
+        {
+            clsBook ABook = new clsBook();
+            string ErrorMsg = "";
+            int BookID = 2147483647;
+            ErrorMsg = ABook.Valid(Title, DatePublished, Stock, Price, AvailableOnline);
+            Assert.AreEqual(ErrorMsg, "");
+        }
+
+        [TestMethod]
+        public void BookIDMid()
+        {
+            clsBook ABook = new clsBook();
+            string ErrorMsg = "";
+            int BookID = 1073741823;
+            ErrorMsg = ABook.Valid(Title, DatePublished, Stock, Price, AvailableOnline);
+            Assert.AreEqual(ErrorMsg, "");
+        }
+
+            
     }
 }
