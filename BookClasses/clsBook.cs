@@ -100,7 +100,7 @@ namespace BookClasses
                 mTitle = Convert.ToString(DB.DataTable.Rows[0]["Title"]);
                 mDatePublished = Convert.ToDateTime(DB.DataTable.Rows[0]["DatePublished"]);
                 mStock = Convert.ToInt32(DB.DataTable.Rows[0]["Stock"]);
-                mPrice = (float) Convert.ToDouble(DB.DataTable.Rows[0]["Price"]);
+                mPrice = Convert.ToSingle(DB.DataTable.Rows[0]["Price"]);
                 mAvailableOnline = Convert.ToBoolean(DB.DataTable.Rows[0]["AvailableOnline"]);
                 return true;
             }
@@ -111,30 +111,36 @@ namespace BookClasses
             
         }
 
-        public string Valid(int bookID,
-                            string title,
+        public string Valid(string title,
                             DateTime datePublished,
                             int stock,
                             float price,
                             bool availableOnline)
         {
-            string Error = "";
-
-            if (bookID < 1)
-            {
-                Error += "The BookID may not be lower than 1.\n";
-            }
+            string error = "";
 
             if (title.Length < 1)
             {
-                Error += "The Title may not be shorter than 1 character.\n";
+                error += "The Title may not be shorter than 1 character.\n";
             }
             
             if(title.Length > 50)
             {
-                Error += "The Title may not be longer than 50 characters.\n";
+                error += "The Title may not be longer than 50 characters.\n";
             }
-            return Error;
+            if (datePublished > DateTime.Now.Date)
+            {
+                error += "The Date cannot be in the future.\n";
+            }
+            if (stock < 0)
+            {
+                error += "The Stock may not be lower than 0.\n";
+            }
+            if (price < 0.01)
+            {
+                error += "The Price may not be lower than 0.01.\n";
+            }
+            return error;
         }
     }
 }
