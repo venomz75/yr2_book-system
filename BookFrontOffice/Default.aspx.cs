@@ -19,7 +19,14 @@ public partial class _Default : System.Web.UI.Page
         BookClasses.clsOrderCollection Orders = new BookClasses.clsOrderCollection();
         lstOrders.DataSource = Orders.OrderList;
         lstOrders.DataValueField = "OrderID";
-        lstOrders.DataTextField = "CustomerID";
+        lstOrders.DataTextField = "OrderStatus";
         lstOrders.DataBind();
+
+    
+}
+
+    protected void lstOrders_SelectedIndexChanged(object sender, EventArgs e)
+    {
+
     }
 }

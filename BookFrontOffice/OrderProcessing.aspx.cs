@@ -8,11 +8,38 @@ using BookClasses;
 
 public partial class OrderProcessing : System.Web.UI.Page
 {
+    Int32 OrderID;
     protected void Page_Load(object sender, EventArgs e)
     {
+
         clsOrder AnOrder = new clsOrder();
         AnOrder = (clsOrder)Session["AnOrder"];
-      //  Response.Write(AnOrder.OrderID);
+        OrderID = Convert.ToInt32(Session["StaffID"]);
+        if(IsPostBack == false)
+        {
+            if(OrderID != -1)
+            {
+                DisplayOrders();
+
+            }
+
+
+        }
+       // Response.Write(AnOrder.OrderID);
+    }
+
+     void DisplayOrders()
+    {
+        clsOrderCollection OrderBook = new clsOrderCollection();
+        OrderBook.ThisOrder.Find(OrderID);
+        txtOrderID.Text = OrderBook.ThisOrder.OrderID.ToString();
+        txtCustomerID.Text = OrderBook.ThisOrder.CustomerID.ToString();
+        txtDatePlaced.Text = OrderBook.ThisOrder.DatePlaced.ToString();
+       txtCompleted.Text = OrderBook.ThisOrder.Completed.ToString();
+        //txtOrderStatus.Text = OrderBook.ThisOrder.OrderStatus.ToString();
+        txtStaffID.Text = OrderBook.ThisOrder.StaffID.ToString();
+
+       
     }
 
     protected void btnOK_Click(object sender, EventArgs e)
@@ -29,7 +56,7 @@ public partial class OrderProcessing : System.Web.UI.Page
         Error = AnOrder.Valid(CustomerID, DatePlaced, Completed, StaffID, OrderStatus);
         if (Error =="")
         {
-            
+            AnOrder.OrderID = Convert.ToInt32(OrderID);
 
             AnOrder.CustomerID = Convert.ToInt32(CustomerID);
 
@@ -39,9 +66,21 @@ public partial class OrderProcessing : System.Web.UI.Page
 
             AnOrder.StaffID = Convert.ToInt32(StaffID);
 
-            AnOrder.OrderStatus = txtOrderStatus.Text;
-            Session["AnOrder"] = AnOrder;
-            Response.Redirect("OrderViewer.aspx");
+            AnOrder.OrderStatus = OrderStatus;
+
+            clsOrderCollection OrderList = new clsOrderCollection();
+            if(OrderID == 000)
+            {
+                OrderList.ThisOrder = AnOrder;
+                OrderList.Add();
+            }
+            else
+            {
+                OrderList.ThisOrder.Find(OrderID);
+                OrderList.ThisOrder = AnOrder;
+                OrderList.Update();
+            }
+            Response.Redirect("OrderList.aspx");
         }
         else
         {
@@ -65,9 +104,24 @@ public partial class OrderProcessing : System.Web.UI.Page
             txtDatePlaced.Text = Convert.ToString(AnOrder.DatePlaced);
             txtCompleted.Text = Convert.ToString(AnOrder.Completed);
             txtStaffID.Text = Convert.ToString(AnOrder.StaffID);
-            txtOrderStatus.Text = AnOrder.OrderStatus;
+            txtOrderStatus.Text = Convert.ToString(AnOrder.OrderStatus);
 
         }
+
+    }
+
+    protected void txtCustomerID_TextChanged(object sender, EventArgs e)
+    {
+
+    }
+
+    protected void txtOrderID_TextChanged(object sender, EventArgs e)
+    {
+
+    }
+
+    protected void btnCancel_Click(object sender, EventArgs e)
+    {
 
     }
 }

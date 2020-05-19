@@ -1,8 +1,5 @@
 ﻿using System.Collections.Generic;
 using System;
-using BookClasses;
-
-using System.Collections.Generic;
 
 namespace BookClasses
 {
@@ -11,7 +8,9 @@ namespace BookClasses
 
     {
 
+
         List<clsOrder> mOrderList = new List<clsOrder>();
+        clsOrder mThisOrder = new clsOrder();
         public List<clsOrder> OrderList
         {
             get
@@ -34,17 +33,74 @@ namespace BookClasses
 
             }
         }
-        public clsOrder ThisOrder { get; set; }
+        public clsOrder ThisOrder
+        {
+            get
+            {
+                return mThisOrder;
+            }
+            set
+            {
+                mThisOrder = value;
+            }
+        }
         public clsOrder TestItem { get; private set; }
         public clsOrder clsOrder { get; private set; }
+        public int Add()
+        {
+            clsDataConnection DB = new clsDataConnection();
+            DB.AddParameter("@CustomerID", mThisOrder.CustomerID);
+            DB.AddParameter("@DatePlaced", mThisOrder.DatePlaced);
+            DB.AddParameter("@Completed", mThisOrder.Completed);
+            DB.AddParameter("@OrderStatus", mThisOrder.OrderStatus);
+            DB.AddParameter("@StaffID", mThisOrder.StaffID);
+            return DB.Execute("sproc_tblOrder_Insert");
+        }
+
 
         public clsOrderCollection()
         {
-            Int32 Index = 0;
-            Int32 RecordCount = 0;
             clsDataConnection DB = new clsDataConnection();
             DB.Execute("sproc_tblOrder_SelectAll");
+            PopulateArray(DB);
+
+
+
+        }
+        public void Delete()
+        {
+            clsDataConnection DB = new clsDataConnection();
+            DB.AddParameter("OrderID", mThisOrder.OrderID);
+            DB.Execute("sproc_tblOrder_delete");
+        }
+        public void Update()
+        {
+            clsDataConnection DB = new clsDataConnection();
+            DB.AddParameter("@OrderID", mThisOrder.OrderID);
+            DB.AddParameter("@CustomerID", mThisOrder.CustomerID);
+            //  DB.AddParameter("@DataPlaced", mThisOrder.DatePlaced);
+            DB.AddParameter("@Completed", mThisOrder.Completed);
+            DB.AddParameter("@OrderStatus", mThisOrder.OrderStatus);
+            DB.AddParameter("@StaffID", mThisOrder.StaffID);
+
+            DB.Execute("sproc_tblOrder_Update");
+        }
+
+        public void ReportByOrderStatus(string OrderStatus)
+        {
+            clsDataConnection DB = new clsDataConnection();
+            DB.AddParameter("@OrderStatus", OrderStatus);
+           DB.Execute("sproc_tblOrder_FilterByOrderStatus");
+           PopulateArray(DB);
+
+
+        }
+        void PopulateArray(clsDataConnection DB)
+        {
+            Int32 Index = 0;
+            Int32 RecordCount;
             RecordCount = DB.Count;
+            mOrderList = new List<clsOrder>();
             while (Index < RecordCount)
             {
                 clsOrder AnOrder = new clsOrder();
@@ -56,15 +112,9 @@ namespace BookClasses
                 AnOrder.StaffID = Convert.ToInt32(DB.DataTable.Rows[Index]["StaffID"]);
                 mOrderList.Add(AnOrder);
                 Index++;
-                
             }
 
         }
-
-
-
-
-
 
     }
 }

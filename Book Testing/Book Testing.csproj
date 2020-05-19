@@ -50,9 +50,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="tstOrderCollection.cs" />
-    <Compile Include="tstOrderLine.cs" />
     <Compile Include="tstOrder.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="tstOrderLine.cs" />
+    <Compile Include="tstOrderLineCollection.cs" />
     <Compile Include="tstStaff.cs" />
     <Compile Include="tstBooks.cs" />
   </ItemGroup>

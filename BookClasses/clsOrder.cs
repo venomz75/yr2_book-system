@@ -85,7 +85,7 @@ namespace BookClasses
             {
                 mOrderID = Convert.ToInt32(DB.DataTable.Rows[0]["OrderID"]);
                 mCustomerID = Convert.ToInt32(DB.DataTable.Rows[0]["CustomerID"]);
-                mDatePlaced = Convert.ToDateTime(DB.DataTable.Rows[0]["DatePlaced"]);
+             //   mDatePlaced = Convert.ToDateTime(DB.DataTable.Rows[0]["DatePlaced"]);
                 mCompleted = Convert.ToBoolean(DB.DataTable.Rows[0]["Completed"]);
                 mOrderStatus = Convert.ToString(DB.DataTable.Rows[0]["OrderStatus"]);
                 mStaffID = Convert.ToInt32(DB.DataTable.Rows[0]["StaffID"]);
